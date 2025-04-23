@@ -22,20 +22,29 @@ public class LoginController {
     private Label statusLabel;
 
     @FXML
-    private void onLoginClicked() {
+    private void onLoginClicked(ActionEvent event) {
         String username = usernameField.getText();
         String password = passwordField.getText();
 
-        boolean success = ApiClient.loginUser(username, password);
+        String response = ApiClient.loginUser(username, password);
 
-        if (success) {
+        if (response != null && response.startsWith("Login successful")) {
             statusLabel.setText("Успешный вход!");
-            // Можно загрузить домашнюю страницу
-            // SceneNavigator.switchScene(...);
+            Stage stage = (Stage) usernameField.getScene().getWindow();
+
+            if (response.contains("admin")) {
+                SceneNavigator.switchScene((Stage) ((Node) event.getSource()).getScene().getWindow(),
+                        "/com/coursework/client/adminActions.fxml");
+            } else {
+                // Пока не реализовано, но можно подключить пользовательский интерфейс позже
+                //SceneNavigator.switchScene(stage, "/com/coursework/client/userDashboard.fxml");
+            }
         } else {
             statusLabel.setText("Неверный логин или пароль.");
         }
     }
+
+
 
     @FXML
     private void onBackToMenu(ActionEvent event) {

@@ -12,4 +12,9 @@ public class ApiConfig {
     public static String getLoginUrl() {
         return BASE_URL + "/user/login";
     }
+
+    public static String getAllUsersUrl() {
+        return BASE_URL + "/admin/users";
+    }
+
 }
