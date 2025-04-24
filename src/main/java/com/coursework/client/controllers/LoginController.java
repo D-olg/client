@@ -1,5 +1,6 @@
 package com.coursework.client.controllers;
 
+import com.coursework.client.session.Session;
 import com.coursework.client.utils.ApiClient;
 import com.coursework.client.utils.SceneNavigator;
 import javafx.event.ActionEvent;
@@ -22,28 +23,26 @@ public class LoginController {
     private Label statusLabel;
 
     @FXML
-    private void onLoginClicked(ActionEvent event) {
+    private void onLoginClicked() {
         String username = usernameField.getText();
         String password = passwordField.getText();
 
         String response = ApiClient.loginUser(username, password);
 
-        if (response != null && response.startsWith("Login successful")) {
-            statusLabel.setText("Успешный вход!");
+        if (response.startsWith("Login successful")) {
+            Session.setCredentials(username, password); // сохраняем логин и пароль
+
             Stage stage = (Stage) usernameField.getScene().getWindow();
 
             if (response.contains("admin")) {
-                SceneNavigator.switchScene((Stage) ((Node) event.getSource()).getScene().getWindow(),
-                        "/com/coursework/client/adminActions.fxml");
+                SceneNavigator.switchScene(stage, "/com/coursework/client/adminActions.fxml");
             } else {
-                // Пока не реализовано, но можно подключить пользовательский интерфейс позже
-                //SceneNavigator.switchScene(stage, "/com/coursework/client/userDashboard.fxml");
+                // переход к пользовательскому интерфейсу
             }
         } else {
             statusLabel.setText("Неверный логин или пароль.");
         }
     }
-
 
 
     @FXML

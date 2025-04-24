@@ -2,7 +2,8 @@
 <?import javafx.scene.layout.*?>
 <?import org.controlsfx.control.*?>
 
-<AnchorPane xmlns:fx="http://javafx.com/fxml"
+<AnchorPane stylesheets="@../css/styles.css"
+            xmlns:fx="http://javafx.com/fxml"
             fx:controller="com.coursework.client.controllers.RegisterController"
             prefWidth="400" prefHeight="300">
     <VBox spacing="10" AnchorPane.topAnchor="20" AnchorPane.rightAnchor="20" AnchorPane.bottomAnchor="20" AnchorPane.leftAnchor="20">

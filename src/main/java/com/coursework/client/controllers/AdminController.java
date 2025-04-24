@@ -1,20 +1,20 @@
 package com.coursework.client.controllers;
 
-import com.coursework.client.dto.UserDTO;
+import com.coursework.client.models.User;
+import com.coursework.client.session.Session;
 import com.coursework.client.utils.ApiClient;
-import com.coursework.client.utils.SceneNavigator;
-import javafx.event.ActionEvent;
+import javafx.beans.property.SimpleObjectProperty;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.SimpleIntegerProperty;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
-import javafx.scene.layout.AnchorPane;
-import com.coursework.client.models.User;
+
 import java.util.List;
-import javafx.beans.property.SimpleStringProperty;
 
 public class AdminController {
 
     @FXML
-    private TableView<User> usersTable;
+    private TableView<User> usersTable; // Используем User вместо UserDTO
     @FXML
     private TableColumn<User, Integer> idColumn;
     @FXML
@@ -24,17 +24,39 @@ public class AdminController {
     @FXML
     private TableColumn<User, String> roleColumn;
     @FXML
+    private TableColumn<User, String> lastLoginColumn; // Новый столбец для отображения последнего входа
+    @FXML
+    private TableColumn<User, String> onlineStatusColumn; // Новый столбец для отображения статуса онлайн
+    @FXML
     private TableColumn<User, Button> actionsColumn;
 
     @FXML
     private void initialize() {
-        // Инициализация таблицы
-        idColumn.setCellValueFactory(cellData -> cellData.getValue().idProperty().asObject());
-        usernameColumn.setCellValueFactory(cellData -> cellData.getValue().usernameProperty());
-        emailColumn.setCellValueFactory(cellData -> cellData.getValue().emailProperty());
-        roleColumn.setCellValueFactory(cellData -> new SimpleStringProperty(
-                cellData.getValue().getRole() == 1 ? "Admin" : "User"
-        ));
+
+        // Привязка столбца ID
+        idColumn.setCellValueFactory(cellData -> new SimpleIntegerProperty(cellData.getValue().getId()).asObject());
+
+        // Привязка столбца Username
+        usernameColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getUsername()));
+
+        // Привязка столбца Email
+        emailColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getEmail()));
+
+        // Привязка столбца Role
+        roleColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getRole() == 1 ? "Admin" : "User"));
+
+        // Привязка столбца Last Login
+        lastLoginColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getLastLogin() != null ? cellData.getValue().getLastLogin().toString() : "N/A"));
+
+        // Привязка столбца Online Status
+        onlineStatusColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().isOnlineStatus() ? "Online" : "Offline"));
+
+        // Привязка столбца Actions
+        actionsColumn.setCellValueFactory(cellData -> {
+            Button editButton = new Button("Edit");
+            editButton.setOnAction(e -> onEditClicked(cellData.getValue()));
+            return new SimpleObjectProperty<>(editButton);
+        });
 
         loadUsers();
     }
@@ -45,19 +67,17 @@ public class AdminController {
     }
 
     private void loadUsers() {
-        List<UserDTO> users = ApiClient.getAllUsers();
+        String username = Session.getUsername();
+        String password = Session.getPassword();
+        // Получение всех пользователей через API
+        List<User> users = ApiClient.getAllUsers(username, password);
         usersTable.getItems().clear();
-        usersTable.getItems().addAll((User) users);
+        usersTable.getItems().addAll(users);
     }
 
-
-    @FXML
-    private void onEditUser(ActionEvent event) {
-        // Логика для редактирования данных пользователя
-    }
-
-    @FXML
-    private void onDeleteUser(ActionEvent event) {
-        // Логика для удаления пользователя
+    // Пример обработки нажатия на кнопку редактирования
+    private void onEditClicked(User user) {
+        // Логика редактирования пользователя
+        System.out.println("Edit user: " + user.getUsername());
     }
 }

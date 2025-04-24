@@ -1,0 +1,58 @@
+.root {
+    -fx-font-family: "Segoe UI", sans-serif;
+    -fx-base: #fdf6f0;
+    -fx-background-color: #fff8f0;
+    -fx-text-fill: #4a3f35;
+}
+
+.button {
+    -fx-background-color: #e6b89c;
+    -fx-text-fill: #ffffff;
+    -fx-font-size: 14px;
+    -fx-background-radius: 20;
+    -fx-padding: 8 16;
+}
+
+.button:hover {
+    -fx-background-color: #d99a79;
+}
+
+.button:pressed {
+    -fx-background-color: #c2866c;
+}
+
+.table-view {
+    -fx-background-color: #fff8f0;
+    -fx-border-color: transparent;
+}
+
+.table-view .column-header-background {
+    -fx-background-color: #e6b89c;
+}
+
+.table-view .table-row-cell:filled:selected {
+    -fx-background-color: #f4c89b;
+    -fx-text-fill: #4a3f35;
+}
+
+.table-view .table-cell {
+    -fx-text-fill: #4a3f35;
+    -fx-font-size: 13px;
+}
+
+.label {
+    -fx-text-fill: #4a3f35;
+    -fx-font-size: 14px;
+}
+
+.text-field, .password-field {
+    -fx-background-color: #fff;
+    -fx-border-color: #e6b89c;
+    -fx-border-radius: 5;
+    -fx-padding: 6 8;
+    -fx-text-fill: #4a3f35;
+}
+
+.text-field:focused, .password-field:focused {
+    -fx-border-color: #d99a79;
+}

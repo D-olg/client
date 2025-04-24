@@ -6,11 +6,11 @@ public class ApiConfig {
 
     // Получение полного URL для регистрации
     public static String getRegisterUrl() {
-        return BASE_URL + "/user/register";
+        return BASE_URL + "/auth/register";
     }
 
     public static String getLoginUrl() {
-        return BASE_URL + "/user/login";
+        return BASE_URL + "/auth/login";
     }
 
     public static String getAllUsersUrl() {

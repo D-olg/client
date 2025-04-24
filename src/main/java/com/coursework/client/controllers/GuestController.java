@@ -4,6 +4,7 @@ import com.coursework.client.utils.SceneNavigator;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
 
@@ -15,6 +16,7 @@ public class GuestController {
     @FXML
     public void initialize() {
         guestLabel.setText("Вы вошли как гость. Некоторые функции могут быть недоступны.");
+
     }
 
     @FXML

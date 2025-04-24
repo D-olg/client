@@ -1,28 +1,31 @@
 package com.coursework.client.utils;
 
-import com.coursework.client.dto.UserDTO;
+import com.coursework.client.models.User; // Используем User вместо UserDTO
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-
+import com.coursework.client.utils.JacksonConfig;
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.io.OutputStream;
+import java.nio.charset.StandardCharsets;
+import java.util.Base64;
 import java.util.List;
 
 public class ApiClient {
+
+    private static ObjectMapper objectMapper = JacksonConfig.createObjectMapper();
+
     public static boolean registerUser(String username, String password, String email) {
         try {
-            // Используем ApiConfig для получения URL
             URL url = new URL(ApiConfig.getRegisterUrl());
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
             conn.setRequestMethod("POST");
             conn.setRequestProperty("Content-Type", "application/json");
             conn.setDoOutput(true);
 
-            // Обновленная строка JSON для передачи email
             String json = String.format("{\"username\":\"%s\", \"password\":\"%s\", \"email\":\"%s\"}", username, password, email);
 
             try (OutputStream os = conn.getOutputStream()) {
@@ -61,7 +64,7 @@ public class ApiClient {
                     while ((line = in.readLine()) != null) {
                         response.append(line);
                     }
-                    return response.toString(); // ← вернёт, например: "Login successful. Role: admin"
+                    return response.toString(); // Возвращаем, например: "Login successful. Role: admin"
                 }
             } else {
                 return "error";
@@ -72,27 +75,38 @@ public class ApiClient {
         }
     }
 
-
-    private static final ObjectMapper objectMapper = new ObjectMapper();
-
-    public static List<UserDTO> getAllUsers() {
+    public static List<User> getAllUsers(String username, String password) {
         try {
-            URL url = new URL(ApiConfig.getAllUsersUrl()); // например: http://localhost:8080/api/admin/users
+            URL url = new URL(ApiConfig.getAllUsersUrl()); // Например: http://localhost:8080/api/admin/users
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
             conn.setRequestMethod("GET");
             conn.setRequestProperty("Accept", "application/json");
 
+            System.out.println(url);
+
+            // Создаем строку для заголовка Authorization в формате "Basic base64(username:password)"
+            String auth = username + ":" + password;
+            String encodedAuth = Base64.getEncoder().encodeToString(auth.getBytes());
+            conn.setRequestProperty("Authorization", "Basic " + encodedAuth);
+            System.out.println(encodedAuth);
+
             int responseCode = conn.getResponseCode();
+            System.out.println("Получен код ответа от сервера: " + responseCode);
+
             if (responseCode == 200) {
                 try (InputStream inputStream = conn.getInputStream()) {
-                    return objectMapper.readValue(inputStream, new TypeReference<List<UserDTO>>() {});
+                    List<User> users = objectMapper.readValue(inputStream, new TypeReference<List<User>>() {});
+                    System.out.println("Пользователи успешно получены: " + users.size() + " записей.");
+                    return users;
                 }
             } else {
-                System.out.println("Ошибка получения пользователей: " + responseCode);
+                System.out.println("Ошибка получения пользователей: " + responseCode + " (username: " + username + ", password: " + password + ")");
             }
         } catch (Exception e) {
+            System.out.println("Ошибка при отправке запроса: " + e.getMessage());
             e.printStackTrace();
         }
+
         return List.of(); // Возвращаем пустой список в случае ошибки
     }
 }
