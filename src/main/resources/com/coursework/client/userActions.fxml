@@ -7,7 +7,7 @@
 
 <AnchorPane stylesheets="@../css/styles.css"
             xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.coursework.client.controllers.AdminActionsController"
+            fx:controller="com.coursework.client.controllers.UserActionsController"
             prefWidth="600" prefHeight="400">
 
     <GridPane hgap="30" vgap="20"
@@ -19,9 +19,9 @@
             <Insets top="30" right="40" bottom="30" left="40"/>
         </padding>
 
-        <Button text="Редактировать пользователей"
+        <Button text="Расчет стоимости"
                 fx:id="editUsersButton"
-                onAction="#onUserEditClicked"
+                onAction="#onCalculationClicked"
                 styleClass="button"
                 GridPane.rowIndex="0" GridPane.columnIndex="0"/>
 

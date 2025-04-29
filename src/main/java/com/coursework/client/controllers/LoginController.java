@@ -37,7 +37,7 @@ public class LoginController {
             if (response.contains("admin")) {
                 SceneNavigator.switchScene(stage, "/com/coursework/client/adminActions.fxml");
             } else {
-                // переход к пользовательскому интерфейсу
+                SceneNavigator.switchScene(stage, "/com/coursework/client/userActions.fxml");
             }
         } else {
             statusLabel.setText("Неверный логин или пароль.");

@@ -17,4 +17,9 @@ public class ApiConfig {
         return BASE_URL + "/admin/users";
     }
 
+    public static String getUpdateUserUrl() { return BASE_URL + "/admin/users"; }
+
+    public static String getDeleteUserUrl() { return BASE_URL + "/admin/users"; }
+
+    public static String getAddUserUrl(){ return BASE_URL + "/admin/users";}
 }

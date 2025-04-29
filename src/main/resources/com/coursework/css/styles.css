@@ -11,7 +11,10 @@
     -fx-font-size: 14px;
     -fx-background-radius: 20;
     -fx-padding: 8 16;
+    -fx-min-width: 150px; /* Минимальная ширина */
+    -fx-max-width: 200px; /* Максимальная ширина */
 }
+
 
 .button:hover {
     -fx-background-color: #d99a79;
@@ -51,8 +54,18 @@
     -fx-border-radius: 5;
     -fx-padding: 6 8;
     -fx-text-fill: #4a3f35;
+    -fx-min-width: 150px; /* Минимальная ширина */
+    -fx-max-width: 500px; /* Максимальная ширина */
 }
 
 .text-field:focused, .password-field:focused {
     -fx-border-color: #d99a79;
+}
+
+.custom-dialog {
+    -fx-background-color: #fff8f0; /* Светлый фон для диалога */
+    -fx-padding: 20px; /* Отступы вокруг содержимого */
+    -fx-border-color: #e6b89c; /* Цвет рамки */
+    -fx-border-width: 1px; /* Ширина рамки */
+    -fx-border-radius: 10px; /* Скругленные углы */
 }

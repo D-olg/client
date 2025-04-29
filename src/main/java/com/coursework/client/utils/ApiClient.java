@@ -109,4 +109,73 @@ public class ApiClient {
 
         return List.of(); // Возвращаем пустой список в случае ошибки
     }
+
+    public static boolean updateUser(User user, String username, String password) {
+        try {
+            URL url = new URL(ApiConfig.getUpdateUserUrl() + "/" + user.getId());
+            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+            conn.setRequestMethod("PUT");
+            conn.setRequestProperty("Content-Type", "application/json");
+            String auth = username + ":" + password;
+            String encodedAuth = Base64.getEncoder().encodeToString(auth.getBytes(StandardCharsets.UTF_8));
+            conn.setRequestProperty("Authorization", "Basic " + encodedAuth);
+            conn.setDoOutput(true);
+
+            String json = objectMapper.writeValueAsString(user);
+            try (OutputStream os = conn.getOutputStream()) {
+                os.write(json.getBytes());
+                os.flush();
+            }
+
+            int responseCode = conn.getResponseCode();
+            return responseCode == 200;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    public static boolean deleteUser(int userId, String username, String password) {
+        try {
+            URL url = new URL(ApiConfig.getDeleteUserUrl() + "/" + userId);
+            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+            conn.setRequestMethod("DELETE");
+            String auth = username + ":" + password;
+            String encodedAuth = Base64.getEncoder().encodeToString(auth.getBytes(StandardCharsets.UTF_8));
+            conn.setRequestProperty("Authorization", "Basic " + encodedAuth);
+
+            int responseCode = conn.getResponseCode();
+            return responseCode == 200;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    public static boolean createUser(User user, String username, String password) {
+        try {
+            URL url = new URL(ApiConfig.getAddUserUrl());
+            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+            conn.setRequestMethod("POST");
+            conn.setRequestProperty("Content-Type", "application/json");
+            String auth = username + ":" + password;
+            String encodedAuth = Base64.getEncoder().encodeToString(auth.getBytes(StandardCharsets.UTF_8));
+            conn.setRequestProperty("Authorization", "Basic " + encodedAuth);
+            conn.setDoOutput(true);
+
+
+            String json = objectMapper.writeValueAsString(user);
+            try (OutputStream os = conn.getOutputStream()) {
+                os.write(json.getBytes());
+                os.flush();
+            }
+
+            int responseCode = conn.getResponseCode();
+            return responseCode == 200 || responseCode == 201;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
 }

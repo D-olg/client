@@ -5,7 +5,7 @@
 <AnchorPane stylesheets="@../css/styles.css"
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="com.coursework.client.controllers.RegisterController"
-            prefWidth="400" prefHeight="300">
+            prefWidth="600" prefHeight="400">
     <VBox spacing="10" AnchorPane.topAnchor="20" AnchorPane.rightAnchor="20" AnchorPane.bottomAnchor="20" AnchorPane.leftAnchor="20">
         <Label text="Регистрация пользователя" style="-fx-font-size: 16px;"/>
         <TextField fx:id="usernameField" promptText="Логин"/>

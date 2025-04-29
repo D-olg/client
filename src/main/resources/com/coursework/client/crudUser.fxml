@@ -1,0 +1,30 @@
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane stylesheets="@../css/styles.css"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.coursework.client.controllers.UserController"
+            prefWidth="600" prefHeight="400">
+
+    <VBox spacing="10" AnchorPane.topAnchor="10" AnchorPane.leftAnchor="10"
+          AnchorPane.rightAnchor="10" AnchorPane.bottomAnchor="10">
+
+        <TableView fx:id="usersTable">
+            <columns>
+                <TableColumn fx:id="idColumn" text="ID" />
+                <TableColumn fx:id="usernameColumn" text="Username" />
+                <TableColumn fx:id="emailColumn" text="Email" />
+                <TableColumn fx:id="roleColumn" text="Role" />
+                <TableColumn fx:id="lastLoginColumn" text="Last Login" />
+                <TableColumn fx:id="onlineStatusColumn" text="Online Status" />
+                <TableColumn fx:id="actionsColumn" text="Actions" />
+            </columns>
+        </TableView>
+
+        <HBox spacing="10">
+            <Button text="Add User" onAction="#onAddUserClicked" />
+            <Button fx:id="reloadButton" text="Reload" onAction="#onReloadClicked" />
+        </HBox>
+
+    </VBox>
+</AnchorPane>
