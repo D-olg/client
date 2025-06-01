@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Text?>
+<AnchorPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.coursework.client.controllers.ProfileController"
+            maxHeight="1080" maxWidth="1920">
+    <VBox spacing="20" alignment="TOP_CENTER" AnchorPane.topAnchor="0" AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0" AnchorPane.bottomAnchor="0">
+        <Button text="← Назад" fx:id="backButton" onAction="#onBackToMenu" styleClass="back-button">
+            <VBox.margin>
+                <Insets top="0" right="0" bottom="10" left="0"/>
+            </VBox.margin>
+        </Button>
+        <Label text="Личный кабинет" styleClass="profile-title" />
+        <Label text="Добро пожаловать!" styleClass="profile-welcome"/>
+        <Text fx:id="username" styleClass="profile-username"/>
+        <HBox spacing="50" alignment="CENTER" styleClass="profile-blocks">
+            <!-- Блок пользователя -->
+            <VBox spacing="15" alignment="TOP_LEFT" styleClass="profile-section">
+                <Label text="Данные пользователя" styleClass="section-title" />
+                <Label text="Имя пользователя" />
+                <TextField fx:id="usernameField" />
+                <Label text="Email" />
+                <TextField fx:id="emailField" />
+                <Label text="Новый пароль" />
+                <PasswordField fx:id="passwordField" />
+                <Button text="Сохранить пользователя" fx:id="saveUserBtn" onAction="#onSaveUser" styleClass="profile-save-btn" />
+            </VBox>
+            <!-- Блок компании -->
+            <VBox spacing="15" alignment="TOP_LEFT" styleClass="profile-section">
+                <Label text="Информация о компании" styleClass="section-title" />
+                <Label text="Название компании" />
+                <TextField fx:id="companyNameField" />
+                <Label text="Описание" />
+                <TextArea fx:id="companyDescriptionField" prefRowCount="4" wrapText="true" />
+                <Button text="Сохранить компанию" fx:id="saveCompanyBtn" onAction="#onSaveCompany" styleClass="profile-save-btn" />
+            </VBox>
+        </HBox>
+    </VBox>
+</AnchorPane>

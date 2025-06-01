@@ -9,6 +9,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import com.coursework.client.session.Session;
 
 public class RegisterController {
 
@@ -21,7 +22,7 @@ public class RegisterController {
 
     // Обработчик события нажатия на кнопку регистрации
     @FXML
-    private void onRegisterClicked() {
+    private void onRegisterClicked(ActionEvent event) {
         String username = usernameField.getText();
         String password = passwordField.getText();
         String email = emailField.getText();
@@ -31,6 +32,8 @@ public class RegisterController {
 
         if (success) {
             showSuccess("Регистрация прошла успешно!");
+            Session.setCredentials(username,password);
+            SceneNavigator.switchScene((Stage) ((Node) event.getSource()).getScene().getWindow(), "/com/coursework/client/userActions.fxml");
         } else {
             showError("Ошибка при регистрации");
         }

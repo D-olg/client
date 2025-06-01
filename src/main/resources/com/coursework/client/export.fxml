@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<?import javafx.collections.FXCollections?>
+<?import java.lang.String?>
+<AnchorPane stylesheets="@../css/styles.css"
+            xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.coursework.client.controllers.ExportController"
+            prefHeight="1080" prefWidth="1920">
+        <VBox spacing="10">
+            <padding>
+                <Insets top="30" right="40" bottom="30" left="40"/>
+            </padding>
+            <Label text="Выберите расчеты для экспорта" style="-fx-font-size: 16px;" />
+
+            <TableView fx:id="valuationTable" prefHeight="400">
+                <columns>
+                    <TableColumn fx:id="selectColumn" text="Выбрать" />
+                    <TableColumn fx:id="companyNameColumn" text="Компания" prefWidth="150" />
+                    <TableColumn fx:id="dateColumn" text="Дата расчета" prefWidth="150" />
+                    <TableColumn fx:id="valueColumn" text="Оценка стоимости" prefWidth="150" />
+                </columns>
+            </TableView>
+            <HBox spacing="10" alignment="CENTER_LEFT">
+                <Label text="Формат:" />
+                <ComboBox fx:id="formatComboBox">
+                    <items>
+                        <FXCollections fx:factory="observableArrayList">
+                            <String fx:value="CSV" />
+                            <String fx:value="XLSX" />
+                            <String fx:value="JSON" />
+                            <String fx:value="PDF" />
+                        </FXCollections>
+                    </items>
+                </ComboBox>
+            </HBox>
+            <HBox spacing="10" alignment="CENTER_LEFT">
+                <Label text="Название файла:" />
+                <TextField fx:id="fileNameTextField" promptText="Введите имя файла" />
+            </HBox>
+
+            <HBox spacing="10" alignment="CENTER_LEFT">
+                <Label text="Путь для сохранения:" />
+                <Label fx:id="folderPathLabel" text="Не выбрано" maxWidth="300" />
+                <Button fx:id="chooseFolderButton" text="Выбрать папку" onAction="#onChooseFolderClicked" />
+            </HBox>
+            <HBox spacing="10" alignment="BASELINE_LEFT">
+                <Button text="Назад" fx:id="backButton" onAction="#onBackToMenu" styleClass="button" />
+                <Button fx:id="exportSingleFileButton" text="Экспорт" onAction="#onExportSingleFileClicked" />
+            </HBox>
+
+
+        </VBox>
+</AnchorPane>

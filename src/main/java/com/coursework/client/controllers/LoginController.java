@@ -23,21 +23,19 @@ public class LoginController {
     private Label statusLabel;
 
     @FXML
-    private void onLoginClicked() {
+    private void onLoginClicked(ActionEvent event) {
         String username = usernameField.getText();
         String password = passwordField.getText();
 
         String response = ApiClient.loginUser(username, password);
 
         if (response.startsWith("Login successful")) {
-            Session.setCredentials(username, password); // сохраняем логин и пароль
-
-            Stage stage = (Stage) usernameField.getScene().getWindow();
+            Session.setCredentials(username, password, response.contains("admin") ? "admin" : "user"); // сохраняем логин и пароль
 
             if (response.contains("admin")) {
-                SceneNavigator.switchScene(stage, "/com/coursework/client/adminActions.fxml");
+                SceneNavigator.switchScene((Stage) ((Node) event.getSource()).getScene().getWindow(), "/com/coursework/client/adminActions.fxml");
             } else {
-                SceneNavigator.switchScene(stage, "/com/coursework/client/userActions.fxml");
+                SceneNavigator.switchScene((Stage) ((Node) event.getSource()).getScene().getWindow(), "/com/coursework/client/userActions.fxml");
             }
         } else {
             statusLabel.setText("Неверный логин или пароль.");

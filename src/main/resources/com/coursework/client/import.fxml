@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<?import javafx.collections.FXCollections?>
+<?import java.lang.String?>
+<AnchorPane stylesheets="@../css/styles.css"
+            xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.coursework.client.controllers.ImportController"
+            prefHeight="1080" prefWidth="1920">
+    <VBox spacing="15" alignment="CENTER" AnchorPane.topAnchor="20" AnchorPane.leftAnchor="20"
+          AnchorPane.rightAnchor="20" AnchorPane.bottomAnchor="20">
+        <Label text="Импорт данных для расчета" style="-fx-font-size: 16px;" />
+
+        <HBox spacing="10" alignment="CENTER">
+            <Label text="Формат:" />
+            <ComboBox fx:id="formatComboBox">
+                <items>
+                    <FXCollections fx:factory="observableArrayList">
+                        <String fx:value="CSV"/>
+                        <String fx:value="XLSX"/>
+                        <String fx:value="JSON"/>
+                    </FXCollections>
+                </items>
+            </ComboBox>
+        </HBox>
+
+        <HBox spacing="10" alignment="CENTER">
+            <Button fx:id="chooseFileButton" text="Выбрать файл" />
+            <Label fx:id="filePathLabel" text="Файл не выбран" maxWidth="300" />
+        </HBox>
+
+        <HBox spacing="10" alignment="CENTER">
+        <Button fx:id="importButton" text="Импортировать и рассчитать" />
+        <Button text="Назад" fx:id="backButton" onAction="#onBackToMenu" styleClass="button" />
+        </HBox>
+    </VBox>
+</AnchorPane>

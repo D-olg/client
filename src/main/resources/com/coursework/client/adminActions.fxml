@@ -4,8 +4,10 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 
-<AnchorPane stylesheets="@../css/styles.css"
+<AnchorPane stylesheets="@../css/adminStyles.css"
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="com.coursework.client.controllers.AdminActionsController"
             prefWidth="600" prefHeight="400">
@@ -27,23 +29,39 @@
 
         <Button text="Редактировать компании"
                 fx:id="editCompaniesButton"
+                onAction="#onCompanyEditClicked"
                 styleClass="button"
                 GridPane.rowIndex="0" GridPane.columnIndex="1"/>
 
-        <Button text="Просмотр логов"
+        <Button text="Системные логи"
                 fx:id="viewLogsButton"
+                onAction="#openLogs"
                 styleClass="button"
-                GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+                GridPane.rowIndex="1" GridPane.columnIndex="0">
+        </Button>
 
-        <Button text="Редактировать тарифы"
+        <Button text="Отладка"
                 fx:id="editTariffsButton"
+                onAction="#onCheckoutClicked"
                 styleClass="button"
                 GridPane.rowIndex="1" GridPane.columnIndex="1"/>
 
-        <Button text="Выход"
-                fx:id="logoutButton"
-                onAction="#onBackToMenu"
+        <Button text="Настройки"
+                fx:id="settingsButton"
+                onAction="#onSettingsClicked"
                 styleClass="button"
                 GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+
+        <Button text="Статистика"
+                fx:id="statsButton"
+                onAction="#onStatsClicked"
+                styleClass="button"
+                GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+
+        <Button text="Выход"
+                fx:id="logoutButton"
+                onAction="#onBackToMenuClicked"
+                styleClass="button"
+                GridPane.rowIndex="3" GridPane.columnIndex="0"/>
     </GridPane>
 </AnchorPane>

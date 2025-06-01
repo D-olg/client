@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.chart.BarChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.chart.LineChart?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<BorderPane fx:id="root" xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.coursework.client.controllers.StatisticsController"
+            stylesheets="@../css/adminStyles.css">
+    <padding>
+        <Insets top="20" right="20" bottom="20" left="20"/>
+    </padding>
+
+    <top>
+        <VBox spacing="15" alignment="CENTER">
+            <Label text="Статистика" styleClass="title-label" style="-fx-font-size: 24px; -fx-font-weight: bold;"/>
+            <Button text="Назад" onAction="#onBackToMenu" styleClass="button"/>
+        </VBox>
+    </top>
+
+    <center>
+        <VBox spacing="30" alignment="CENTER">
+            <GridPane hgap="30" vgap="15" alignment="CENTER">
+                <columnConstraints>
+                    <ColumnConstraints halignment="RIGHT"/>
+                    <ColumnConstraints halignment="LEFT" minWidth="100"/>
+                </columnConstraints>
+
+                <Label text="Всего пользователей:" GridPane.columnIndex="0" GridPane.rowIndex="0" styleClass="stat-label"/>
+                <Hyperlink fx:id="usersCountLink" text="0" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+
+                <Label text="Активных сегодня:" GridPane.columnIndex="0" GridPane.rowIndex="1" styleClass="stat-label"/>
+                <Label fx:id="activeTodayLabel" text="0" GridPane.columnIndex="1" GridPane.rowIndex="1" styleClass="stat-value"/>
+
+                <Label text="Всего расчетов:" GridPane.columnIndex="0" GridPane.rowIndex="2" styleClass="stat-label"/>
+                <Label fx:id="totalCalculationsLabel" text="0" GridPane.columnIndex="1" GridPane.rowIndex="2" styleClass="stat-value"/>
+
+                <Label text="Расчетов за вчера:" GridPane.columnIndex="0" GridPane.rowIndex="3" styleClass="stat-label"/>
+                <Label fx:id="yesterdayCalculationsLabel" text="0" GridPane.columnIndex="1" GridPane.rowIndex="3" styleClass="stat-value"/>
+
+                <Label text="Среднее за 7 дней:" GridPane.columnIndex="0" GridPane.rowIndex="4" styleClass="stat-label"/>
+                <Label fx:id="average7DaysLabel" text="0" GridPane.columnIndex="1" GridPane.rowIndex="4" styleClass="stat-value"/>
+            </GridPane>
+
+            <HBox spacing="20" alignment="CENTER">
+                <BarChart fx:id="weeklyChart" title="Расчеты по дням недели" 
+                          legendVisible="false"
+                          prefHeight="300" prefWidth="500">
+                    <xAxis>
+                        <CategoryAxis label="День недели" tickLabelRotation="0"/>
+                    </xAxis>
+                    <yAxis>
+                        <NumberAxis fx:id="weeklyChartYAxis" label="Количество расчетов" 
+                                   forceZeroInRange="true" autoRanging="true"/>
+                    </yAxis>
+                </BarChart>
+
+                <LineChart fx:id="dailyChart" title="Динамика расчетов за неделю"
+                          legendVisible="false"
+                          prefHeight="300" prefWidth="500">
+                    <xAxis>
+                        <CategoryAxis label="Дата"/>
+                    </xAxis>
+                    <yAxis>
+                        <NumberAxis fx:id="dailyChartYAxis" label="Количество расчетов"
+                                   forceZeroInRange="true" autoRanging="true"/>
+                    </yAxis>
+                </LineChart>
+            </HBox>
+        </VBox>
+    </center>
+</BorderPane>

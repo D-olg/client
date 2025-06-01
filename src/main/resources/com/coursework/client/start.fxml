@@ -4,12 +4,11 @@
 <AnchorPane stylesheets="@../css/styles.css"
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="com.coursework.client.controllers.StartController"
-            prefWidth="600" prefHeight="400">
+            prefWidth="1920" prefHeight="1080">
     <VBox spacing="10" alignment="CENTER" AnchorPane.topAnchor="20" AnchorPane.leftAnchor="20" AnchorPane.rightAnchor="20" AnchorPane.bottomAnchor="20">
         <Label  text="Добро пожаловать" style="-fx-font-size: 16px;"/>
         <Button text="Вход" onAction="#onLoginClicked"/>
         <Button text="Регистрация" onAction="#onRegisterClicked"/>
-        <Button text="Войти как гость" onAction="#onGuestClicked"/>
         <Button text="Выход" onAction="#onExitClicked"/>
     </VBox>
 </AnchorPane>

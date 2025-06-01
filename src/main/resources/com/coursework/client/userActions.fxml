@@ -1,14 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
 <?import javafx.geometry.Insets?>
 
-<AnchorPane stylesheets="@../css/styles.css"
+<AnchorPane
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="com.coursework.client.controllers.UserActionsController"
             prefWidth="600" prefHeight="400">
+
+    <HBox alignment="CENTER_LEFT" spacing="10" AnchorPane.topAnchor="10" AnchorPane.leftAnchor="10">
+        <Button fx:id="backButton" text="← Назад" onAction="#onBackToAdmin" styleClass="back-to-admin-button"/>
+    </HBox>
 
     <GridPane hgap="30" vgap="20"
               alignment="CENTER"
@@ -20,30 +23,39 @@
         </padding>
 
         <Button text="Расчет стоимости"
-                fx:id="editUsersButton"
+                fx:id="calculationButton"
                 onAction="#onCalculationClicked"
                 styleClass="button"
                 GridPane.rowIndex="0" GridPane.columnIndex="0"/>
 
-        <Button text="Редактировать компании"
-                fx:id="editCompaniesButton"
+        <Button text="История расчетов"
+                fx:id="historyButton"
+                onAction="#onHistoryClicked"
                 styleClass="button"
                 GridPane.rowIndex="0" GridPane.columnIndex="1"/>
 
-        <Button text="Просмотр логов"
-                fx:id="viewLogsButton"
+        <Button text="Импорт"
+                fx:id="importButton"
+                onAction="#onImportClicked"
                 styleClass="button"
                 GridPane.rowIndex="1" GridPane.columnIndex="0"/>
 
-        <Button text="Редактировать тарифы"
-                fx:id="editTariffsButton"
+        <Button text="Экспорт"
+                fx:id="exportButton"
+                onAction="#onExportClicked"
                 styleClass="button"
                 GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+
+        <Button text="Профиль"
+                fx:id="profileButton"
+                onAction="#onProfileClicked"
+                styleClass="button"
+                GridPane.rowIndex="2" GridPane.columnIndex="0"/>
 
         <Button text="Выход"
                 fx:id="logoutButton"
                 onAction="#onBackToMenu"
                 styleClass="button"
-                GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+                GridPane.rowIndex="2" GridPane.columnIndex="1"/>
     </GridPane>
 </AnchorPane>

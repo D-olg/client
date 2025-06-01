@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane stylesheets="@../css/styles.css"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.coursework.client.controllers.CalculationController">
+    <center>
+        <VBox spacing="15">
+            <padding>
+                <Insets top="30" right="40" bottom="30" left="40"/>
+            </padding>
+
+            <Label text="Расчёт стоимости компании по модели EBO"
+                   style="-fx-font-size: 18px; -fx-font-weight: bold"/>
+
+            <!-- Таблица с вводом всех данных -->
+            <TableView fx:id="financialTable" editable="true">
+                <columns>
+                    <TableColumn fx:id="yearColumn" text="Год"/>
+                    <TableColumn fx:id="equityColumn" text="Собственный капитал (Bt)" prefWidth="180"/>
+                    <TableColumn fx:id="netIncomeColumn" text="Чистая прибыль (xt)" prefWidth="180"/>
+                    <TableColumn fx:id="discountRateColumn" text="Ставка дисконтирования (%)" prefWidth="180"/>
+                </columns>
+            </TableView>
+
+            <!-- Кнопка добавления строки -->
+            <HBox alignment="CENTER_LEFT">
+                <Button fx:id="addRowButton" text="Добавить строку"/>
+                <Button fx:id="deleteRowButton" text="Удалить строку" onAction="#onDeleteRow" />
+            </HBox>
+
+            <!-- Чекбокс для включения сценария -->
+            <CheckBox fx:id="useScenarioCheckBox" text="Использовать сценарий" onAction="#onScenarioToggle"/>
+
+            <!-- Скрываемый блок для сценария -->
+            <VBox fx:id="scenarioBox" spacing="10" visible="false" managed="false">
+                <TextField fx:id="scenarioDescriptionField" promptText="Описание сценария"/>
+                <TextField fx:id="growthRateField" promptText="Прогноз роста прибыли (% в год)"/>
+                <TextField fx:id="discountRateField" promptText="Ставка дисконтирования (%)"/>
+                <TextField fx:id="durationYearsField" promptText="Период (лет)"/>
+            </VBox>
+
+            <!-- Кнопки -->
+            <HBox spacing="10" alignment="CENTER_RIGHT">
+                <Button text="Назад" onAction="#onBackToMenu"/>
+                <Button text="Рассчитать" onAction="#onCalculate"/>
+            </HBox>
+        </VBox>
+    </center>
+</BorderPane>

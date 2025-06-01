@@ -11,10 +11,13 @@ public class MainApp extends Application {
     public void start(Stage primaryStage) throws Exception {
         primaryStage.getIcons().add(new Image(getClass().getResourceAsStream("/com/coursework/icons/symbol.png")));
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/com/coursework/client/start.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 600, 400);
-        primaryStage.setTitle("Регистрация");
+        Scene scene = new Scene(fxmlLoader.load());
+        primaryStage.setTitle("ValuateEBO");
         primaryStage.setScene(scene);
         primaryStage.show();
+        primaryStage.setFullScreenExitHint("");
+        primaryStage.setFullScreenExitKeyCombination(null);
+        primaryStage.setFullScreen(true);
     }
 
     public static void main(String[] args) {

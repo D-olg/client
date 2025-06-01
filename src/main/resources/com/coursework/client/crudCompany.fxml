@@ -3,11 +3,12 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.control.cell.PropertyValueFactory?>
 <?import javafx.scene.text.Text?>
 
 <AnchorPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.coursework.client.controllers.UserCRUDController"
+            fx:controller="com.coursework.client.controllers.CompanyCRUDController"
             stylesheets="@../css/adminStyles.css">
 
     <VBox spacing="10" AnchorPane.topAnchor="20" AnchorPane.rightAnchor="20" 
@@ -18,18 +19,17 @@
             <Button text="← Назад" onAction="#onBackToMenu" styleClass="back-button" visible="true"/>
             <Region HBox.hgrow="ALWAYS"/>
             <Button text="Обновить" onAction="#onReloadClicked" styleClass="action-button"/>
-            <Button text="Добавить пользователя" onAction="#onAddUserClicked" styleClass="add-button"/>
+            <Button text="Добавить компанию" onAction="#onAddCompanyClicked" styleClass="add-button"/>
         </HBox>
 
-        <!-- Таблица пользователей -->
-        <TableView fx:id="usersTable" VBox.vgrow="ALWAYS">
+        <!-- Таблица компаний -->
+        <TableView fx:id="companyTable" VBox.vgrow="ALWAYS">
             <columns>
                 <TableColumn fx:id="idColumn" text="ID" prefWidth="50" minWidth="50"/>
-                <TableColumn fx:id="usernameColumn" text="Имя пользователя" prefWidth="150" minWidth="150"/>
-                <TableColumn fx:id="emailColumn" text="Email" prefWidth="200" minWidth="200"/>
-                <TableColumn fx:id="roleColumn" text="Роль" prefWidth="100" minWidth="100"/>
-                <TableColumn fx:id="lastLoginColumn" text="Последний вход" prefWidth="150" minWidth="150"/>
-                <TableColumn fx:id="onlineStatusColumn" text="Статус" prefWidth="80" minWidth="80"/>
+                <TableColumn fx:id="userIdColumn" text="ID Пользователя" prefWidth="100" minWidth="100"/>
+                <TableColumn fx:id="nameColumn" text="Название" prefWidth="200" minWidth="200"/>
+                <TableColumn fx:id="descriptionColumn" text="Описание" prefWidth="300" minWidth="300"/>
+                <TableColumn fx:id="createdAtColumn" text="Дата создания" prefWidth="150" minWidth="150"/>
                 <TableColumn fx:id="actionsColumn" text="Действия" prefWidth="100" minWidth="100"/>
             </columns>
             <columnResizePolicy>

@@ -1,0 +1,232 @@
+.root {
+    -fx-font-family: "Segoe UI", sans-serif;
+    -fx-base: #eaf6fb;
+    -fx-background-color: #f5faff;
+    -fx-text-fill: #222e3a;
+}
+
+.button {
+    -fx-background-color: #5bbcff;
+    -fx-text-fill: #ffffff;
+    -fx-font-size: 14px;
+    -fx-background-radius: 20;
+    -fx-padding: 8 16;
+    -fx-min-width: 150px;
+    -fx-max-width: 200px;
+}
+
+.button:hover {
+    -fx-background-color: #399be0;
+}
+
+.button:pressed {
+    -fx-background-color: #2176b6;
+}
+
+.back-container {
+    -fx-alignment: center-left;
+    -fx-spacing: 5;
+    -fx-padding: 0;
+    -fx-min-width: 150px;
+}
+
+.back-button {
+    -fx-background-color: #b3d8f7;
+    -fx-min-width: 120px;
+    -fx-max-width: 120px;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+}
+
+.back-button:hover {
+    -fx-background-color: #d0e7fa;
+}
+
+.back-to-admin-button {
+    -fx-background-color: #b3d8f7;
+    -fx-min-width: 120px;
+    -fx-max-width: 120px;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+}
+
+.back-to-admin-button:hover {
+    -fx-background-color: #d0e7fa;
+}
+
+.action-button {
+    -fx-min-width: 120px;
+    -fx-max-width: 120px;
+    -fx-background-color: #5bbcff;
+}
+
+.add-button {
+    -fx-min-width: 180px;
+    -fx-max-width: 180px;
+    -fx-background-color: #8fd3ff;
+}
+
+.add-button:hover {
+    -fx-background-color: #b3e0ff;
+}
+
+.danger-button {
+    -fx-background-color: #ff5b5b;
+    -fx-min-width: 100px;
+    -fx-max-width: 100px;
+}
+
+.danger-button:hover {
+    -fx-background-color: #ff8a8a;
+}
+
+.arrow-icon {
+    -fx-fill: #222e3a;
+    -fx-font-size: 24px;
+    -fx-font-weight: bold;
+}
+
+.table-view {
+    -fx-background-color: #eaf6fb;
+    -fx-border-color: transparent;
+}
+
+.table-view .column-header-background {
+    -fx-background-color: #cbe6f7;
+}
+
+.table-view .table-row-cell:filled:selected {
+    -fx-background-color: #5bbcff;
+    -fx-text-fill: #ffffff;
+}
+
+.table-view .table-cell {
+    -fx-text-fill: #222e3a;
+    -fx-font-size: 13px;
+}
+
+.label {
+    -fx-text-fill: #222e3a;
+    -fx-font-size: 14px;
+}
+
+.text-field, .password-field {
+    -fx-background-color: #f5faff;
+    -fx-border-color: #5bbcff;
+    -fx-border-radius: 5;
+    -fx-padding: 6 8;
+    -fx-text-fill: #222e3a;
+    -fx-min-width: 150px;
+    -fx-max-width: 500px;
+}
+
+.text-field:focused, .password-field:focused {
+    -fx-border-color: #399be0;
+}
+
+.custom-dialog {
+    -fx-background-color: #eaf6fb;
+    -fx-padding: 20px;
+    -fx-border-color: #5bbcff;
+    -fx-border-width: 1px;
+    -fx-border-radius: 10px;
+}
+
+.error {
+    -fx-border-color: #ff5b5b;
+    -fx-border-width: 2;
+    -fx-border-radius: 4;
+}
+
+.chart {
+    -fx-background-color: #f5faff;
+    -fx-padding: 10;
+}
+
+.chart-plot-background {
+    -fx-background-color: #eaf6fb;
+    -fx-border-color: #5bbcff;
+    -fx-border-width: 1;
+}
+
+.chart-legend {
+    -fx-background-color: transparent;
+    -fx-text-fill: #222e3a;
+    -fx-font-size: 13px;
+}
+
+.chart-series-line {
+    -fx-stroke-width: 2px;
+}
+
+.chart-line-symbol {
+    -fx-background-color: #8fd3ff, white;
+    -fx-background-insets: 0, 2;
+    -fx-background-radius: 6px;
+    -fx-padding: 4;
+}
+
+.axis {
+    -fx-tick-label-fill: #222e3a;
+    -fx-tick-label-font-size: 12px;
+    -fx-axis-line-visible: true;
+    -fx-tick-mark-visible: true;
+    -fx-minor-tick-visible: false;
+}
+
+.axis-label {
+    -fx-text-fill: #222e3a;
+    -fx-font-size: 13px;
+}
+
+.tooltip {
+    -fx-background-color: #eaf6fb;
+    -fx-text-fill: #222e3a;
+    -fx-font-size: 12px;
+    -fx-border-color: #5bbcff;
+    -fx-border-width: 1;
+    -fx-padding: 6;
+    -fx-background-radius: 6;
+}
+
+.title-label {
+    -fx-font-size: 24px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #399be0;
+}
+
+.stat-label {
+    -fx-font-size: 14px;
+    -fx-text-fill: #222e3a;
+}
+
+.stat-value {
+    -fx-font-size: 14px;
+    -fx-text-fill: #399be0;
+    -fx-font-weight: bold;
+}
+
+.hyperlink {
+    -fx-text-fill: #399be0;
+    -fx-font-weight: bold;
+    -fx-underline: false;
+    -fx-border-color: transparent;
+}
+
+.hyperlink:hover {
+    -fx-text-fill: #5bbcff;
+}
+
+.chart-bar {
+    -fx-bar-fill: #5bbcff;
+}
+
+.chart-bar:hover {
+    -fx-bar-fill: #8fd3ff;
+}
+
+.chart-title {
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #399be0;
+}
